@@ -11,7 +11,7 @@ CREATE PROCEDURE GetAliasesByRegion()
     END //
 DELIMITER ;
 
-DELIMITER // !!!!!!!!!! POISTA JOS EI TOIMI !!!!!!!!!!!!
+DELIMITER // 
 CREATE PROCEDURE GetNamesByProfession()
     BEGIN
     SELECT name_
@@ -25,7 +25,6 @@ CREATE PROCEDURE GetNamesByProfession()
 DELIMITER ;
 
 // INDEXIT:
-!!!!!! POISTA JOS EI TOIMI !!!!!!!!!!!
 CREATE INDEX Name_index ON names_ (name_);
 CREATE INDEX Profession_index ON name_worked_as (profession); 
 CREATE INDEX Name_id_index ON name_worked_as (name_id); 

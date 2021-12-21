@@ -4,9 +4,7 @@ require_once('../db.php');
 $average_rating = $_GET['average_rating'];
 $dbcon = createDbConnection();
 
-$sql = "SELECT * FROM numvotesbyrating";
-
-// $sql = "CALL GetNamesByProfession('" . $profession . "');";
+$sql = "SELECT * FROM `NumVotesByRating`";
 
 $prepare = $dbcon->prepare($sql);
 $prepare->execute();

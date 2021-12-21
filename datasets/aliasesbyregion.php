@@ -7,6 +7,7 @@
     $region = $_GET['region'];
     $dbcon = createDbConnection(); // Kutsutaan db.php-tiedostossa olevaa createDbConnection()-funktiota, joka avaa tietokantayhteden
     // Muodostetaan SQL-lause muuttujaan
+    // Tehty proseduuri (GetAliasesByRegion)
     $sql = "CALL GetAliasesByRegion('" . $region . "');";
     // Ajetaan kysely kantaan
     $prepare = $dbcon->prepare($sql);

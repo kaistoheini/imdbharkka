@@ -1,5 +1,6 @@
-// PROSEDUURIT
-DELIMITER //
+// PROSEDUURIT:
+
+DELIMITER $$
 CREATE PROCEDURE GetAliasesByRegion()
     BEGIN
     SELECT title 
@@ -8,23 +9,21 @@ CREATE PROCEDURE GetAliasesByRegion()
     GROUP BY title_id 
     ORDER BY title 
     LIMIT 10;
-    END //
+    END $$
 DELIMITER ;
 
-DELIMITER // 
-CREATE PROCEDURE GetNamesByProfession()
-    BEGIN
-    SELECT name_
-    FROM names_ 
-    INNER JOIN name_worked_as
-    ON names_.name_id = name_worked_as.name_id
-    WHERE profession 
-    LIKE '%" . $profession . "%'
-    LIMIT 10;
-    END //
+DELIMITER $$
+CREATE PROCEDURE TitlesWithOriginalTitle()
+        BEGIN
+        SELECT `title`
+        FROM `aliases`
+        WHERE (is_original_title = 1)
+        LIMIT 20;
+        END $$
 DELIMITER ;
 
 // INDEXIT:
+
 CREATE INDEX Name_index ON names_ (name_);
 CREATE INDEX Profession_index ON name_worked_as (profession); 
 CREATE INDEX Name_id_index ON name_worked_as (name_id); 
@@ -34,9 +33,10 @@ CREATE INDEX Title_genres_title_id_index ON title_genres (title_id);
 CREATE INDEX Title_genres_title_id_index ON title_genres (region);
 
 // NÄKYMÄT:
-CREATE VIEW NumVotesByRating
+
+CREATE VIEW MoviesBy1984
 AS
-SELECT DISTINCT num_votes
-FROM title_ratings
-WHERE average_rating LIKE '%" . $average_rating . "%'
+SELECT `primary_title`
+FROM `titles`
+WHERE start_year = 1984
 LIMIT 10;

@@ -15,7 +15,7 @@
     // Tallennetaan vastaus muuttujaan
     $rows = $prepare->fetchAll();
     // Tulostetaan otsikko
-    $html = '<h1>Aliases by region ' . $region . '</h1>';
+    $html = '<h1>Aliases by region: ' . $region . '</h1>';
     // Avataan ul-elementti
     $html .= '<ul>';
     // Looppataan tietokannasta saadut rivit läpi
